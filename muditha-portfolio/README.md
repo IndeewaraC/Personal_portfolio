@@ -1,16 +1,47 @@
-# React + Vite
+# Muditha Lakmali Bodawatte Gedara - Academic Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A clean, modern, and highly responsive personal portfolio website designed specifically for a Biostatistician and Health Data Scientist. This project features a "Pearl White" and "Cognac" aesthetic, smooth animations, and a modular data structure that makes updating academic and professional records effortless.
 
-Currently, two official plugins are available:
+## 🚀 Live Demo
+*(Add your live Vercel or GitHub Pages link here once deployed)*
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✨ Key Features
+* **Fully Responsive Design**: Includes a custom mobile-first hamburger menu overlay that prevents content clipping on small devices.
+* **Modular Architecture**: All CV data (experience, publications, skills) is separated from the UI logic. You can update your resume without touching the React components.
+* **Smooth Animations**: Uses `framer-motion` for elegant entry animations and scrolling transitions.
+* **Sticky Navigation**: A frosted-glass sticky header that allows users to quickly jump between sections.
+* **Modern Typography**: Powered by *Plus Jakarta Sans* for a clean, academic, and highly readable look.
 
-## React Compiler
+## 🛠️ Tech Stack
+* **Framework**: [React](https://reactjs.org/)
+* **Styling**: Pure CSS (Custom CSS Variables for easy theming)
+* **Icons**: [Lucide React](https://lucide.dev/)
+* **Animations**: [Framer Motion](https://www.framer.com/motion/)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 📂 Project Structure
 
-## Expanding the ESLint configuration
+To make maintenance easy, this portfolio separates the visual layout (`App.jsx`) from your actual resume information (`src/data/`).
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```text
+├── public/
+│   └── media/
+│       ├── profile.jpg          # Your profile picture
+│       └── Muditha_CV_2026.pdf  # Downloadable Dossier/CV
+├── src/
+│   ├── data/                    # 📝 UPDATE YOUR INFO HERE
+│   │   ├── affiliations.js
+│   │   ├── awards.js
+│   │   ├── certifications.js
+│   │   ├── education.js
+│   │   ├── experience.js
+│   │   ├── hobbies.js
+│   │   ├── leadership.js
+│   │   ├── profile.js
+│   │   ├── publications.js
+│   │   ├── skills.js
+│   │   └── socials.js
+│   ├── App.jsx                  # UI Layout & Sections
+│   ├── index.css                # Styling & Responsive rules
+│   └── main.jsx                 # React Entry Point
+├── package.json
+└── README.md

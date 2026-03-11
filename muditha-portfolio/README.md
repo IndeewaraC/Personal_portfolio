@@ -3,7 +3,7 @@
 A clean, modern, and highly responsive personal portfolio website designed specifically for a Biostatistician and Health Data Scientist. This project features a "Pearl White" and "Cognac" aesthetic, smooth animations, and a modular data structure that makes updating academic and professional records effortless.
 
 ## 🚀 Live Demo
-*(Add your live Vercel or GitHub Pages link here once deployed)*
+[*(mudithalakmali.com)*](https://mudithalakmali-portfolio.vercel.app/)
 
 ## ✨ Key Features
 * **Fully Responsive Design**: Includes a custom mobile-first hamburger menu overlay that prevents content clipping on small devices.

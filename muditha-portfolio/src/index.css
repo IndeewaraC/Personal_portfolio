@@ -38,8 +38,8 @@ body {
 }
 
 .profile-img-wrap {
-  width: clamp(150px, 35vw, 190px); 
-  height: clamp(150px, 35vw, 190px);
+  width: clamp(180px, 55vw, 350px); 
+  height: clamp(180px, 55vw, 350px);
   margin: 0 auto 30px;
   padding: 6px;
   border: 2px solid var(--cognac);
@@ -72,7 +72,6 @@ body {
   margin: 8px 0 20px;
 }
 
-/* ADDED: Social Links & Icons */
 .social-links {
   display: flex;
   justify-content: center;
@@ -90,6 +89,9 @@ body {
   transform: translateY(-3px);
 }
 
+/* =========================================================
+   1. STICKY HEADER WRAPPER
+   ========================================================= */
 .sticky-nav-wrapper {
   position: sticky;
   top: 0;
@@ -100,33 +102,82 @@ body {
   width: 100%;
 }
 
-.nav-bar {
+.mobile-menu-header {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 24px;
+}
+
+.mobile-menu-btn {
+  background: none;
+  border: none;
+  color: var(--cognac);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
   justify-content: center;
-  flex-wrap: wrap;
-  gap: 15px;
-  padding: 15px 10px;
+  padding: 0;
+}
+
+/* =========================================================
+   2. MOBILE SLIDE-DOWN OVERLAY (The Fix)
+   ========================================================= */
+.nav-bar {
+  position: fixed; /* Takes it completely out of the sticky height */
+  top: 60px; /* Sits just underneath the sticky header */
+  left: 0;
+  width: 100%;
+  height: calc(100vh - 60px);
+  background-color: var(--card-white);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 24px 100px 24px;
+  overflow-y: auto;
+  
+  /* Smooth animation */
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-20px);
+  transition: all 0.3s ease;
+}
+
+.nav-bar.nav-open {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
 }
 
 .nav-bar a {
-  color: var(--text-muted);
+  color: var(--text-main);
   text-decoration: none;
-  font-size: 0.75rem;
+  font-size: 1.1rem; /* Larger font to tap easily on mobile */
   font-weight: 700;
   letter-spacing: 1.5px;
   transition: color 0.3s ease;
+  width: 100%;
+  text-align: center;
+  padding: 15px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-bar a:last-child {
+  border-bottom: none;
 }
 
 .nav-bar a:hover {
   color: var(--cognac);
 }
 
+/* =========================================================
+   3. CONTENT SECTIONS
+   ========================================================= */
 section {
   scroll-margin-top: 80px;
   margin-top: 80px;
 }
 
-/* ADDED: Section Labels */
 .section-label {
   display: flex;
   align-items: center;
@@ -139,7 +190,6 @@ section {
   margin-bottom: 30px;
 }
 
-/* ADDED: CV Download Button */
 .cv-button {
   background: var(--cognac);
   color: white;
@@ -196,11 +246,45 @@ section {
   font-weight: 500;
 }
 
+/* =========================================================
+   4. DESKTOP OVERRIDES
+   ========================================================= */
 @media (min-width: 640px) {
   .canvas { padding: 0 40px 100px 40px; }
   .card-header { flex-direction: row; justify-content: space-between; align-items: baseline; }
   .skills-grid { grid-template-columns: repeat(2, 1fr); }
   .content-card { padding: 35px; }
-  .nav-bar { gap: 35px; }
-  .nav-bar a { font-size: 0.85rem; }
+}
+
+@media (min-width: 850px) {
+  .mobile-menu-header {
+    display: none; /* Hide hamburger button on PC */
+  }
+  
+  .nav-bar {
+    /* Reset mobile fixed positioning to standard flat layout */
+    position: static;
+    height: auto;
+    background-color: transparent;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 25px;
+    padding: 15px 20px;
+    
+    /* Remove mobile animations */
+    opacity: 1;
+    pointer-events: auto;
+    transform: none;
+    overflow-y: visible;
+  }
+
+  .nav-bar a {
+    color: var(--text-muted);
+    width: auto;
+    border-bottom: none;
+    padding: 0;
+    font-size: 0.75rem; /* Shrink back to elegant size for desktop */
+  }
 }

@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { 
   Mail, 
@@ -15,7 +16,9 @@ import {
   Palette, 
   Users,
   ShieldCheck,
-  Verified
+  Verified,
+  Menu,
+  X
 } from 'lucide-react';
 import { profileData } from './data/profile';
 import { educationData } from './data/education';
@@ -30,12 +33,15 @@ import { hobbiesData } from './data/hobbies';
 import { socialLinks } from './data/socials';
 import './index.css';
 
-const getFormattedDate = () => {
-  return "March 10, 2026";
-};
-
 export default function App() {
-  const lastUpdated = getFormattedDate();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [lastUpdated, setLastUpdated] = useState("");
+
+  useEffect(() => {
+    setLastUpdated(new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }));
+  }, []);
+
+  const closeMenu = () => setIsMenuOpen(false);
 
   return (
     <div className="canvas">
@@ -76,17 +82,30 @@ export default function App() {
       </header>
 
       <div className="sticky-nav-wrapper">
-        <nav className="nav-bar">
-          <a href="#about">ABOUT</a>
-          <a href="#experience">EXPERIENCE</a>
-          <a href="#publications">RESEARCH</a>
-          <a href="#skills">SKILLS</a>
-          <a href="#education">EDUCATION</a>
-          <a href="#honors">AWARDS</a>
-          <a href="#leadership">LEADERSHIP</a>
-          <a href="#certifications">CERTIFICATIONS</a>
-          <a href="#affiliations">AFFILIATIONS</a>
-          <a href="#hobbies">HOBBIES</a>
+        <div className="mobile-menu-header">
+          <span style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--text-main)', letterSpacing: '1px' }}>
+            NAVIGATION
+          </span>
+          <button 
+            className="mobile-menu-btn" 
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label="Toggle Navigation"
+          >
+            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
+
+        <nav className={`nav-bar ${isMenuOpen ? 'nav-open' : ''}`}>
+          <a href="#about" onClick={closeMenu}>ABOUT</a>
+          <a href="#experience" onClick={closeMenu}>EXPERIENCE</a>
+          <a href="#publications" onClick={closeMenu}>RESEARCH</a>
+          <a href="#skills" onClick={closeMenu}>SKILLS</a>
+          <a href="#education" onClick={closeMenu}>EDUCATION</a>
+          <a href="#honors" onClick={closeMenu}>HONORS</a>
+          <a href="#leadership" onClick={closeMenu}>LEADERSHIP</a>
+          <a href="#certifications" onClick={closeMenu}>CERTIFICATIONS</a>
+          <a href="#affiliations" onClick={closeMenu}>AFFILIATIONS</a>
+          <a href="#hobbies" onClick={closeMenu}>HOBBIES</a>
         </nav>
       </div>
 
@@ -244,7 +263,7 @@ export default function App() {
       </main>
 
       <footer style={{ marginTop: '100px', padding: '60px 0', borderTop: '1px solid var(--border)', textAlign: 'center' }}>
-        <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem' }}>© 2026 {profileData.name} • {profileData.title}</p>
+        <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem' }}>© {new Date().getFullYear()} {profileData.name} • {profileData.title}</p>
         <p style={{ color: 'var(--cognac)', fontSize: '0.75rem', fontWeight: 800, marginTop: '10px', letterSpacing: '1px' }}>REVISION: {lastUpdated}</p>
       </footer>
     </div>

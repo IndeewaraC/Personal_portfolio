@@ -1,0 +1,26 @@
+name: Staging CI (Cypress Tests)
+
+
+on:
+  push:
+    branches:
+      - staging  
+  pull_request:
+    branches:
+      - main    
+
+jobs:
+  cypress-run:
+    runs-on: ubuntu-latest
+    
+    steps:
+      # 2. Check out your code from the repository
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      # 3. Run the official Cypress Action
+      - name: Cypress Run
+        uses: cypress-io/github-action@v6
+        with:
+
+          browser: chrome

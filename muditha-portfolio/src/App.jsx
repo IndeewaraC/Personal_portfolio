@@ -112,7 +112,7 @@ export default function App() {
       <main>
         <section id="about">
           <div className="section-label"><BookOpen size={16} /> 01. SUMMARY</div>
-          <p style={{ fontSize: 'clamp(1.1rem, 3vw, 1.35rem)', fontWeight: 600, color: 'var(--text-main)', lineHeight: 1.4, marginBottom: '20px' }}>
+          <p style={{ fontSize: 'clamp(1.1rem, 3vw, 1.35rem)', color: 'var(--text-main)', lineHeight: 1.4, marginBottom: '20px' }}>
             {profileData.bio.split('.')[0]}.
           </p>
           <p style={{ fontSize: '1.05rem', color: 'var(--text-muted)', lineHeight: 1.7 }}>

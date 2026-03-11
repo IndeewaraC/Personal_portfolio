@@ -120,7 +120,7 @@ export default function App() {
           </p>
           <div style={{ marginTop: '35px' }}>
             <a href={profileData.cvPath} download className="cv-button">
-              <Download size={18} /> DOWNLOAD DOSSIER
+              <Download size={18} /> DOWNLOAD RESUME
             </a>
           </div>
         </section>

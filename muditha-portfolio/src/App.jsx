@@ -111,7 +111,7 @@ export default function App() {
 
       <main>
         <section id="about">
-          <div className="section-label"><BookOpen size={16} /> 01. SUMMARY</div>
+          <div className="section-label"><BookOpen size={16} /> SUMMARY</div>
           <p style={{ fontSize: 'clamp(1.1rem, 3vw, 1.35rem)', color: 'var(--text-main)', lineHeight: 1.4, marginBottom: '20px' }}>
             {profileData.bio.split('.')[0]}.
           </p>
@@ -128,7 +128,7 @@ export default function App() {
         </section>
 
         <section id="experience">
-          <div className="section-label"><Briefcase size={16} /> 02. PROFESSIONAL EXPERIENCE</div>
+          <div className="section-label"><Briefcase size={16} /> PROFESSIONAL EXPERIENCE</div>
           {experienceData.map((job, i) => (
             <div key={i} className="content-card">
               <div className="card-header">
@@ -142,7 +142,7 @@ export default function App() {
         </section>
 
         <section id="publications">
-          <div className="section-label"><FileText size={16} /> 03. RESEARCH & PUBLICATIONS</div>
+          <div className="section-label"><FileText size={16} /> RESEARCH & PUBLICATIONS</div>
           <h5 style={{ color: 'var(--text-muted)', marginBottom: '15px', fontSize: '0.9rem', letterSpacing: '1px' }}>JOURNAL PUBLICATIONS</h5>
           {publicationsData.map((pub, i) => (
             <div key={i} className="content-card" style={{ borderLeft: '3px solid var(--cognac)' }}>
@@ -162,7 +162,7 @@ export default function App() {
         </section>
 
         <section id="skills">
-          <div className="section-label"><Cpu size={16} /> 04. TECHNICAL STACK & EXPERTISE</div>
+          <div className="section-label"><Cpu size={16} /> TECHNICAL STACK & EXPERTISE</div>
           <div className="skills-grid">
             {skillsData.map((group, i) => (
               <div key={i} className="content-card" style={{ marginBottom: 0 }}>
@@ -178,7 +178,7 @@ export default function App() {
         </section>
 
         <section id="education">
-          <div className="section-label"><GraduationCap size={16} /> 05. ACADEMIC BACKGROUND</div>
+          <div className="section-label"><GraduationCap size={16} /> ACADEMIC BACKGROUND</div>
           {educationData.map((edu, i) => (
             <div key={i} className="content-card">
               <div className="card-header">
@@ -192,7 +192,7 @@ export default function App() {
         </section>
 
         <section id="honors">
-          <div className="section-label"><Award size={16} /> 06. AWARDS & HONORS</div>
+          <div className="section-label"><Award size={16} /> AWARDS & HONORS</div>
           <div className="content-card">
             <ul style={{ paddingLeft: '20px', color: 'var(--text-muted)', margin: 0 }}>
               {awardsData.map((award, i) => (
@@ -205,7 +205,7 @@ export default function App() {
         </section>
 
         <section id="leadership">
-          <div className="section-label"><Users size={16} /> 07. VOLUNTEER & LEADERSHIP</div>
+          <div className="section-label"><Users size={16} /> VOLUNTEER & LEADERSHIP</div>
           <div className="skills-grid">
             {leadershipData.map((item, i) => (
               <div key={i} className="content-card" style={{ marginBottom: 0 }}>
@@ -218,7 +218,7 @@ export default function App() {
         </section>
 
         <section id="certifications">
-          <div className="section-label"><Verified size={16} /> 08. CERTIFICATIONS & TRAINING</div>
+          <div className="section-label"><Verified size={16} /> CERTIFICATIONS & TRAINING</div>
           {certificationsData.map((cert, i) => (
             <div key={i} className="content-card">
               <div className="card-header">
@@ -231,7 +231,7 @@ export default function App() {
         </section>
 
         <section id="affiliations">
-          <div className="section-label"><ShieldCheck size={16} /> 09. PROFESSIONAL AFFILIATIONS</div>
+          <div className="section-label"><ShieldCheck size={16} /> PROFESSIONAL AFFILIATIONS</div>
           <div className="content-card">
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '15px' }}>
               {affiliationsData.map((org, i) => (
@@ -245,7 +245,7 @@ export default function App() {
         </section>
 
         <section id="hobbies">
-          <div className="section-label"><Heart size={16} /> 10. BEYOND THE DATA</div>
+          <div className="section-label"><Heart size={16} /> BEYOND THE DATA</div>
           <div className="skills-grid">
             {hobbiesData.map((hobby, i) => (
               <div key={i} className="content-card" style={{ marginBottom: 0 }}>

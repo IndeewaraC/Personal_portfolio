@@ -1,6 +1,5 @@
 name: Staging CI (Cypress Tests)
 
-
 on:
   push:
     branches:
@@ -14,13 +13,19 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      # 2. Check out your code from the repository
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      # 3. Run the official Cypress Action
       - name: Cypress Run
         uses: cypress-io/github-action@v6
         with:
-
           browser: chrome
+          
+          # 1. Point Cypress to your specific project folder
+          working-directory: ./muditha-portfolio
+          
+          # 2. Boot up the Vite local server in the background
+          start: npm run dev
+          
+          # 3. Tell Cypress to wait until the server answers before testing
+          wait-on: 'http://localhost:5173'

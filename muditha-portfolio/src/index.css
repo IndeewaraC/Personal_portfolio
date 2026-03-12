@@ -4,6 +4,7 @@
   --bg-pearl: #fdfcf9;
   --card-white: #ffffff;
   --cognac: #a35d36;
+  --profile-wrapper: #a35d3675;
   --text-main: #1a1c20;
   --text-muted: #64748b;
   --border: #e5e0d8;
@@ -42,7 +43,7 @@ body {
   height: clamp(180px, 55vw, 350px);
   margin: 0 auto 30px;
   padding: 6px;
-  border: 2px solid var(--cognac);
+  border: 2px solid var(--profile-wrapper);
   border-radius: 50%;
   box-shadow: 0 10px 40px rgba(163, 93, 54, 0.15);
   background: var(--card-white);

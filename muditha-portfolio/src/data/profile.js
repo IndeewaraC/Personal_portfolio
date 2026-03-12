@@ -1,7 +1,17 @@
 export const profileData = {
-  name: "Muditha Lakmali Bodawatte Gedara",
+  name: [{
+    first: "Muditha",
+    middle: "Lakmali",
+    last: "Bodawatte Gedara"
+  }],
   title: "Biostatistician | Health Data Scientist",
-  location: "Winnipeg, MB, Canada",
+  location:[
+    {
+      city: "Winnipeg",
+      province: "MB",
+      country: "Canada"
+    }
+  ],
   email: "muditha.bodawatte@umanitoba.ca",
   cvPath: "/media/Muditha_CV_2026.pdf",
   tagline: "Welcome and thank you for visiting!",

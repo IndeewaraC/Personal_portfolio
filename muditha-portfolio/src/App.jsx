@@ -51,10 +51,10 @@ export default function App() {
           animate={{ opacity: 1, scale: 1 }}
           className="profile-img-wrap"
         >
-          <img src="/media/profile.jpg" alt={profileData.name} className="profile-img" />
+          <img src="/media/profile.png" alt={profileData.name[0].first + ' ' + profileData.name[0].last} className="profile-img" />
         </motion.div>
         
-        <h1 className="name-hero">{profileData.name}</h1>
+        <h1 className="name-hero">{profileData.name[0].first + ' ' + profileData.name[0].last}</h1>
         <p className="title-tagline">{profileData.title}</p>
         
         <div style={{ 
@@ -67,7 +67,7 @@ export default function App() {
           fontSize: '0.9rem'
         }}>
           <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-            <MapPin size={16} color="var(--cognac)" /> {profileData.location}
+            <MapPin size={16} color="var(--cognac)" /> {profileData.location[0].country}
           </span>
           <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
             <Mail size={16} color="var(--cognac)" /> {profileData.email}
@@ -263,7 +263,7 @@ export default function App() {
       </main>
 
       <footer style={{ marginTop: '100px', padding: '60px 0', borderTop: '1px solid var(--border)', textAlign: 'center' }}>
-        <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem' }}>© {new Date().getFullYear()} {profileData.name} • {profileData.title}</p>
+        <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem' }}>© {new Date().getFullYear()} {profileData.name[0].first} {profileData.name[0].last} • {profileData.title}</p>
         <p style={{ color: 'var(--cognac)', fontSize: '0.75rem', fontWeight: 800, marginTop: '10px', letterSpacing: '1px' }}>Last Updated: {lastUpdated}</p>
       </footer>
     </div>

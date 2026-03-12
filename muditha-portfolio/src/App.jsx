@@ -118,11 +118,13 @@ export default function App() {
           <p style={{ fontSize: '1.05rem', color: 'var(--text-muted)', lineHeight: 1.7 }}>
             {profileData.bio.split('.').slice(1).join('.')}.
           </p>
-          <div style={{ marginTop: '35px' }}>
+          
+          {/*<div style={{ marginTop: '35px' }}>
             <a href={profileData.cvPath} download className="cv-button">
               <Download size={18} /> DOWNLOAD RESUME
             </a>
           </div>
+          */}
         </section>
 
         <section id="experience">

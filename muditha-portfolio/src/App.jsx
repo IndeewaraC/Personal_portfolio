@@ -112,8 +112,8 @@ export default function App() {
       <main>
         <section id="about">
           {/*<div className="section-label"><BookOpen size={16} /> SUMMARY</div>*/}
-          <p style={{ fontSize: 'clamp(1.05rem, 3vw, 1.05rem)', color: 'var(--text-main)', lineHeight: 1.4, marginBottom: '20px' }}>
-            {profileData.tagline.split('.')[0]}.
+          <p style={{ fontSize: 'clamp(1.18rem, 3vw, 1.18rem)', color: 'var(--text-main)', lineHeight: 1.4, marginBottom: '20px' }}>
+            {profileData.tagline.split('.')[0]}
           </p>
           <p style={{ fontSize: 'clamp(1.05rem, 3vw, 1.05rem)', color: 'var(--text-main)', lineHeight: 1.4, marginBottom: '20px' }}>
             {profileData.bio.split('.')[0]}.

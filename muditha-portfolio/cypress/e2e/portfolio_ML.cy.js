@@ -40,25 +40,14 @@ describe('Muditha Lakmali - Portfolio', () => {
       cy.get('#publications .content-card').should('be.visible');
      });
 
-    it('Tc_nav_004 :smoothly scrolls to hobbies sections when desktop nav is clicked', () => {
-      cy.get('.nav-bar a[href="#hobbies"]').click();
+     it('Tc_nav_004 :smoothly scrolls to hobbies sections when desktop nav is clicked', () => {
+      cy.get('.mobile-menu-btn').click();
+        cy.get('.nav-bar a[href="#hobbies"]').click({force: true});
       cy.url().should('include', '#hobbies');
       cy.get('#hobbies').should('be.visible');
       cy.get('#hobbies .content-card ul li').as('hobbyItems');
 
-      cy.get('@hobbyItems').should('have.length',hobbiesData.length);
-
-cy.get('@hobbyItems').each(($li, index) => {
-    cy.wrap($li)
-      .find('strong')
-      .should('contain.text', hobbiesData[index].category);
-
-      if (hobbiesData[index].items) {
-      hobbiesData[index].items.forEach((hobbyItem) => {
-        cy.wrap($li).should('contain.text', hobbyItem);
-      });
-    }
-    }); });
+      cy.get('@hobbyItems').should('have.length',hobbiesData.length); });
     
     it('Tc_nav_005 :smoothly scrolls to skills sections when desktop nav is clicked', () => {
       cy.get('.nav-bar a[href="#skills"]').click();

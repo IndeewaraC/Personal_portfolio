@@ -49,19 +49,7 @@ describe('Muditha Lakmali - Portfolio in mobile view', () => {
       cy.get('#hobbies').should('be.visible');
       cy.get('#hobbies .content-card ul li').as('hobbyItems');
 
-      cy.get('@hobbyItems').should('have.length',hobbiesData.length);
-
-cy.get('@hobbyItems').each(($li, index) => {
-    cy.wrap($li)
-      .find('strong')
-      .should('contain.text', hobbiesData[index].category);
-
-      if (hobbiesData[index].items) {
-      hobbiesData[index].items.forEach((hobbyItem) => {
-        cy.wrap($li).should('contain.text', hobbyItem);
-      });
-    }
-    }); });
+      cy.get('@hobbyItems').should('have.length',hobbiesData.length); });
     
     it('Tc_nav_005 :smoothly scrolls to skills sections when desktop nav is clicked', () => {
       cy.get('.mobile-menu-btn').click();

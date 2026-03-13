@@ -1,3 +1,5 @@
+import { skillsData } from '../../src/data/skills';
+import {hobbiesData} from '../../src/data/hobbies';
 describe('Muditha Lakmali - Portfolio', () => {
   //The test cases are following in this suite runs with staging environment locally http://localhost:5173/
   //Version control is with GIithub and useing Cypress for testing.
@@ -40,18 +42,41 @@ describe('Muditha Lakmali - Portfolio', () => {
       cy.get('.nav-bar a[href="#hobbies"]').click();
       cy.url().should('include', '#hobbies');
       cy.get('#hobbies').should('be.visible');
-      cy.get('#hobbies .skills-grid .content-card').should('have.length.greaterThan', 0);
-      cy.get('#hobbies .skills-grid .content-card').should('be.visible');
-    });
+      cy.get('#hobbies .content-card ul li').as('hobbyItems');
+
+      cy.get('@hobbyItems').should('have.length',hobbiesData.length);
+
+cy.get('@hobbyItems').each(($li, index) => {
+    cy.wrap($li)
+      .find('strong')
+      .should('contain.text', hobbiesData[index].category);
+
+      if (hobbiesData[index].items) {
+      hobbiesData[index].items.forEach((hobbyItem) => {
+        cy.wrap($li).should('contain.text', hobbyItem);
+      });
+    }
+    }); });
     
     it('Tc_nav_005 :smoothly scrolls to skills sections when desktop nav is clicked', () => {
       cy.get('.nav-bar a[href="#skills"]').click();
       cy.url().should('include', '#skills');
       cy.get('#skills').should('be.visible'); 
-      cy.get('#skills .skills-grid .content-card').should('be.visible'); 
-      cy.get('#skills .skills-grid .content-card').should('have.length.greaterThan', 0);
-      cy.get('#skills .skills-grid .content-card').find('h4').should('be.visible');
-      cy.get('#skills .skills-grid .content-card .skill-tag').should('exist').and('have.length.greaterThan', 0);
+      cy.get('#skills .content-card ul li').as('skillItems');
+      cy.get('@skillItems').should('have.length', skillsData.length);
+
+    cy.get('@skillItems').each(($li, index) => {
+    cy.wrap($li)
+      .find('strong')
+      .should('contain.text', skillsData[index].category);
+
+      if (skillsData[index].items) {
+      skillsData[index].items.forEach((skillItem) => {
+        cy.wrap($li).should('contain.text', skillItem);
+      });
+    }
+    });
+
 
 
     });

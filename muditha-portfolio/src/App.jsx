@@ -323,16 +323,16 @@ export default function App() {
                   alignItems: 'flex-start' 
                 }}>
 
-                  <span style={{ color: 'var(--cognac)', marginRight: '12px', marginTop: '2px' }}>
+                 {/*} <span style={{ color: 'var(--cognac)', marginRight: '12px', marginTop: '2px' }}>
                     {hobby.icon === "Plane" && <Plane size={18} />}
                     {hobby.icon === "Palette" && <Palette size={18} />}
                     {hobby.icon === "Heart" && <Heart size={18} />}
-                  </span>
+                  </span>*/}
                 
                   <div>
-                    <strong style={{ color: 'var(--text-main)', fontWeight: 700, marginRight: '6px' }}>
+                   {/*} <strong style={{ color: 'var(--text-main)', fontWeight: 700, marginRight: '6px' }}>
                       {hobby.category}:
-                    </strong>
+                    </strong>*/}
                     {hobby.description}
                   </div>
                 </li>

@@ -41,7 +41,6 @@ describe('Muditha Lakmali - Portfolio', () => {
      });
 
      it('Tc_nav_004 :smoothly scrolls to hobbies sections when desktop nav is clicked', () => {
-      cy.get('.mobile-menu-btn').click();
         cy.get('.nav-bar a[href="#hobbies"]').click({force: true});
       cy.url().should('include', '#hobbies');
       cy.get('#hobbies').should('be.visible');

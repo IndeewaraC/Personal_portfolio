@@ -16,6 +16,7 @@ import PublicationsSection from './data/PublicationsSection';
 import SkillsSection from './data/SkillsSection';
 import AboutSection from './data/AboutSection';
 import Projects from './data/Projects';
+import Awards from './data/AwardsSection';
 
 import './index.css';
 
@@ -101,6 +102,7 @@ export default function App() {
           <a href="#publications" onClick={(e) => handleNavClick(e, 'publications')}>RESEARCH</a>
           <a href="#skills" onClick={(e) => handleNavClick(e, 'skills')}>SKILLS</a>
           <a href="#education" onClick={(e) => handleNavClick(e, 'education')}>EDUCATION</a>
+          <a href="#honors" onClick={(e) => handleNavClick(e, 'honors')}>HONORS</a>
           <a href="#leadership" onClick={(e) => handleNavClick(e, 'leadership')}>LEADERSHIP</a>
           <a href="#certifications" onClick={(e) => handleNavClick(e, 'certifications')}>CERTIFICATIONS</a>
           <a href="#affiliations" onClick={(e) => handleNavClick(e, 'affiliations')}>AFFILIATIONS</a>

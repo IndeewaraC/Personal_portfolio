@@ -41,6 +41,18 @@ export default function App() {
 
   const closeMenu = () => setIsMenuOpen(false);
 
+  const handleNavClick = (e, id) => {
+    e.preventDefault(); 
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
+    }
+    setIsMenuOpen(false); 
+  };
+
 
   if (!profile) return null; 
 
@@ -101,8 +113,8 @@ export default function App() {
 
         <AboutSection profile={profile} />
         <ExperienceSection />
-        <PublicationsSection />
         <Projects />
+        <PublicationsSection />
         <SkillsSection />
         <EducationSection />
         <AwardsSection />

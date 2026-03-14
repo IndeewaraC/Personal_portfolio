@@ -1,5 +1,5 @@
 describe('Muditha Lakmali - Portfolio', () => {
-  // Navigation tests for Desktop View
+
   beforeEach(() => {
     cy.visit('http://localhost:5173/'); 
   });

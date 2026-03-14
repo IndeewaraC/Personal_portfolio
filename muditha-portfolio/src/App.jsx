@@ -4,7 +4,7 @@ import { Mail, MapPin, Linkedin, GraduationCap, Menu, X } from 'lucide-react';
 import { client } from './contentfulClient';
 import { socialLinks } from './data/socials';
 
-// Import all modular sections
+
 import ExperienceSection from './data/ExperienceSection'; 
 import AffiliationSection from './data/AffiliationSection';
 import AwardsSection from './data/AwardsSection'; 
@@ -28,7 +28,6 @@ export default function App() {
       year: 'numeric', month: 'long', day: 'numeric' 
     }));
     
-
     client.getEntries({ content_type: 'profile' })
       .then((response) => {
         if (response.items.length > 0) {
@@ -38,8 +37,18 @@ export default function App() {
       .catch(console.error);
   }, []);
 
-  const closeMenu = () => setIsMenuOpen(false);
-
+  
+  const handleNavClick = (e, id) => {
+    e.preventDefault(); 
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
+    }
+    setIsMenuOpen(false); 
+  };
 
   if (!profile) return null; 
 
@@ -51,7 +60,6 @@ export default function App() {
           animate={{ opacity: 1, scale: 1 }} 
           className="profile-img-wrap"
         >
-    
           <img src="/media/profile.png" alt={`${profile.firstName} ${profile.lastName}`} className="profile-img" />
         </motion.div>
 
@@ -81,24 +89,24 @@ export default function App() {
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
+        
+        
         <nav className={`nav-bar ${isMenuOpen ? 'nav-open' : ''}`}>
-          <a href="#about" onClick={closeMenu}>ABOUT</a>
-          <a href="#experience" onClick={closeMenu}>EXPERIENCE</a>
-          <a href="#publications" onClick={closeMenu}>RESEARCH</a>
-          <a href="#skills" onClick={closeMenu}>SKILLS</a>
-          <a href="#education" onClick={closeMenu}>EDUCATION</a>
-          <a href="#honors" onClick={closeMenu}>HONORS</a>
-          <a href="#leadership" onClick={closeMenu}>LEADERSHIP</a>
-          <a href="#certifications" onClick={closeMenu}>CERTIFICATIONS</a>
-          <a href="#affiliations" onClick={closeMenu}>AFFILIATIONS</a>
-          <a href="#hobbies" onClick={closeMenu}>HOBBIES</a>
+          <a href="#about" onClick={(e) => handleNavClick(e, 'about')}>ABOUT</a>
+          <a href="#experience" onClick={(e) => handleNavClick(e, 'experience')}>EXPERIENCE</a>
+          <a href="#publications" onClick={(e) => handleNavClick(e, 'publications')}>RESEARCH</a>
+          <a href="#skills" onClick={(e) => handleNavClick(e, 'skills')}>SKILLS</a>
+          <a href="#education" onClick={(e) => handleNavClick(e, 'education')}>EDUCATION</a>
+          <a href="#honors" onClick={(e) => handleNavClick(e, 'honors')}>HONORS</a>
+          <a href="#leadership" onClick={(e) => handleNavClick(e, 'leadership')}>LEADERSHIP</a>
+          <a href="#certifications" onClick={(e) => handleNavClick(e, 'certifications')}>CERTIFICATIONS</a>
+          <a href="#affiliations" onClick={(e) => handleNavClick(e, 'affiliations')}>AFFILIATIONS</a>
+          <a href="#hobbies" onClick={(e) => handleNavClick(e, 'hobbies')}>HOBBIES</a>
         </nav>
       </div>
 
       <main>
-        {/* Pass profile down to AboutSection as a prop */}
         <AboutSection profile={profile} />
-
         <ExperienceSection />
         <PublicationsSection />
         <SkillsSection />

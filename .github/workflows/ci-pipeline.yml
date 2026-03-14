@@ -1,4 +1,4 @@
-name: Node.js CI Pipeline
+name: Prod CI Pipeline
 
 on:
   pull_request:

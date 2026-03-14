@@ -7,7 +7,7 @@ export default function HobbySection() {
   const [hobbies, setHobbies] = useState([]); 
 
   useEffect(() => {
-    client.getEntries({ content_type: 'hobbies' })
+    client.getEntries({ content_type: 'hobbies', order: '-sys.createdAt' })
       .then((response) => setHobbies(response.items))
       .catch(console.error);
   }, []);

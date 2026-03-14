@@ -17,17 +17,15 @@ export default function CertificationsSection() {
         <Verified size={16} /> CERTIFICATIONS & TRAINING
       </div>
       {certificationsList.map((cert, i) => (
-        <div key={i} className="content-card">
-          <div className="card-header">
-            <h4 style={{ margin: 0, fontSize: '1.05rem' }}>{cert.fields.title}</h4>
-            <span style={{ color: 'var(--cognac)', fontWeight: 700, fontSize: '0.85rem' }}>
-              {cert.fields.date}
-            </span>
-          </div>
-          <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', marginTop: '5px' }}>
-            {cert.fields.issuer}
-          </p>
-        </div>
+        <div key={i} className="content-card certification-card">
+    <div className="cert-header">
+      <div className="cert-info">
+        <h4 className="cert-title">{cert.fields.title}</h4>
+        <p className="cert-issuer">{cert.fields.issuer}</p>
+      </div>
+      <span className="cert-date" style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '6px', color: 'var(--cognac)', fontSize: '0.7rem', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '1.5px' }}>{cert.fields.date}</span>
+    </div>
+  </div>
       ))}
     </section>
   );

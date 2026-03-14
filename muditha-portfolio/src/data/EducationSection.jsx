@@ -7,7 +7,7 @@ export default function EducationSection() {
 
   useEffect(() => {
 
-    client.getEntries({ content_type: 'education' })
+    client.getEntries({ content_type: 'education', order: '-sys.createdAt' })
       .then((response) => seteducationlist(response.items))
       .catch(console.error);
   }, []);

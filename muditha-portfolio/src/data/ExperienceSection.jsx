@@ -6,7 +6,7 @@ export default function ExperienceSection() {
   const [experiences, setExperiences] = useState([]);
 
   useEffect(() => {
-    client.getEntries({ content_type: 'experience' })
+    client.getEntries({ content_type: 'experience', order: '-sys.createdAt' })
       .then((response) => setExperiences(response.items))
       .catch(console.error);
   }, []);

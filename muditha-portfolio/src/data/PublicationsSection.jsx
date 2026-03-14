@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { client } from '../contentfulClient'; 
-import { FileText } from 'lucide-react';
+import { FileText, ExternalLink } from 'lucide-react';
 
 export default function PublicationsSection() {
   const [publications, setPublications] = useState([]);
@@ -26,6 +26,30 @@ export default function PublicationsSection() {
                   <h4 style={{ fontSize: '1.05rem', marginBottom: '8px' }}>{pub.fields.title}</h4>
                   <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>{pub.fields.journal} ({pub.fields.date})</p>
                   <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem', marginTop: '5px' }}>{pub.fields.authors}</p>
+                  <a 
+  href={pub.fields.url} 
+  target="_blank" 
+  rel="noopener noreferrer" 
+  className="view-paper-link"
+  style={{ 
+    textDecoration: 'none', 
+    display: 'inline-flex', 
+    alignItems: 'center', 
+    gap: '6px',
+    color: 'var(--cognac)',
+    fontSize: '0.7rem',
+    fontWeight: '800',
+    textTransform: 'uppercase',
+    letterSpacing: '1.5px',
+    transition: 'opacity 0.3s ease'
+  }}
+  onMouseOver={(e) => e.currentTarget.style.opacity = '0.7'}
+  onMouseOut={(e) => e.currentTarget.style.opacity = '1'}
+>
+  View Paper 
+  <ExternalLink size={10} strokeWidth={3} />
+</a>
+
                 </div>
               ))}
               <h5 style={{ color: 'var(--text-muted)', margin: '40px 0 15px 0', fontSize: '0.9rem', letterSpacing: '1px' }}>CONFERENCE PRESENTATIONS</h5>

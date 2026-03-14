@@ -6,10 +6,16 @@ export default function LeadershipSection() {
   const [leadership, setLeadership] = useState([]);
 
 useEffect(() => {
-    client.getEntries({ content_type: 'leadership' })
-      .then((response) => setLeadership(response.items))
-      .catch(console.error);
+
+    client.getEntries({ content_type: 'leadership', order: '-sys.createdAt' }) //system created date is used.
+      .then((response) => {
+  
+        console.log("🕵️ RAW FIELDS:", response.items[0].fields);
+        setLeadership(response.items); 
+      })
+      .catch((error) => console.error(error));
   }, []);
+
 return(
 
   <section id="leadership">

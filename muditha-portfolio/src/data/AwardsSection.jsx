@@ -6,7 +6,7 @@ export default function Awards() {
   const [awardsList, setAwardsList] = useState([]);
 
   useEffect(() => {
-    client.getEntries({ content_type: 'awards' })
+    client.getEntries({ content_type: 'awards', order: '-sys.createdAt' })
       .then((response) => setAwardsList(response.items))
       .catch(console.error);
   }, []);

@@ -15,6 +15,7 @@ import LeadershipSection from './data/LeadershipSection';
 import PublicationsSection from './data/PublicationsSection';
 import SkillsSection from './data/SkillsSection';
 import AboutSection from './data/AboutSection';
+import Projects from './data/Projects';
 
 import './index.css';
 
@@ -85,6 +86,7 @@ export default function App() {
           <a href="#about" onClick={closeMenu}>ABOUT</a>
           <a href="#experience" onClick={closeMenu}>EXPERIENCE</a>
           <a href="#publications" onClick={closeMenu}>RESEARCH</a>
+          <a href="#projects" onClick={closeMenu}>PROJECTS</a>
           <a href="#skills" onClick={closeMenu}>SKILLS</a>
           <a href="#education" onClick={closeMenu}>EDUCATION</a>
           <a href="#honors" onClick={closeMenu}>HONORS</a>
@@ -96,11 +98,11 @@ export default function App() {
       </div>
 
       <main>
-        {/* Pass profile down to AboutSection as a prop */}
-        <AboutSection profile={profile} />
 
+        <AboutSection profile={profile} />
         <ExperienceSection />
         <PublicationsSection />
+        <Projects />
         <SkillsSection />
         <EducationSection />
         <AwardsSection />
@@ -110,11 +112,11 @@ export default function App() {
         <HobbySection />
       </main>
 
-      <footer style={{ marginTop: '100px', padding: '60px 0', borderTop: '1px solid var(--border)', textAlign: 'center' }}>
-        <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem' }}>
+      <footer style={{ marginTop: '40px', padding: '30px 20px', borderTop: '1px solid var(--border)', textAlign: 'center' }}>
+        <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem', margin: '0 0 8px 0' }}>
           © {new Date().getFullYear()} {profile.firstName} {profile.lastName} • {profile.title}
         </p>
-        <p style={{ color: 'var(--cognac)', fontSize: '0.75rem', fontWeight: 800, marginTop: '10px', letterSpacing: '1px' }}>
+        <p style={{ color: 'var(--cognac)', fontSize: '0.75rem', fontWeight: 800, margin: '0', letterSpacing: '1px' }}>
           Last Updated: {lastUpdated}
         </p>
       </footer>

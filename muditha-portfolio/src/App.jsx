@@ -95,17 +95,16 @@ export default function App() {
           </button>
         </div>
         <nav className={`nav-bar ${isMenuOpen ? 'nav-open' : ''}`}>
-          <a href="#about" onClick={closeMenu}>ABOUT</a>
-          <a href="#experience" onClick={closeMenu}>EXPERIENCE</a>
-          <a href="#publications" onClick={closeMenu}>RESEARCH</a>
-          <a href="#projects" onClick={closeMenu}>PROJECTS</a>
-          <a href="#skills" onClick={closeMenu}>SKILLS</a>
-          <a href="#education" onClick={closeMenu}>EDUCATION</a>
-          <a href="#honors" onClick={closeMenu}>HONORS</a>
-          <a href="#leadership" onClick={closeMenu}>LEADERSHIP</a>
-          <a href="#certifications" onClick={closeMenu}>CERTIFICATIONS</a>
-          <a href="#affiliations" onClick={closeMenu}>AFFILIATIONS</a>
-          <a href="#hobbies" onClick={closeMenu}>HOBBIES</a>
+          <a href="#about" onClick={(e) => handleNavClick(e, 'about')}>ABOUT</a>
+          <a href="#experience" onClick={(e) => handleNavClick(e, 'experience')}>EXPERIENCE</a>
+          <a href="#projects" onClick={(e) => handleNavClick(e, 'projects')}>PROJECTS</a>
+          <a href="#publications" onClick={(e) => handleNavClick(e, 'publications')}>RESEARCH</a>
+          <a href="#skills" onClick={(e) => handleNavClick(e, 'skills')}>SKILLS</a>
+          <a href="#education" onClick={(e) => handleNavClick(e, 'education')}>EDUCATION</a>
+          <a href="#leadership" onClick={(e) => handleNavClick(e, 'leadership')}>LEADERSHIP</a>
+          <a href="#certifications" onClick={(e) => handleNavClick(e, 'certifications')}>CERTIFICATIONS</a>
+          <a href="#affiliations" onClick={(e) => handleNavClick(e, 'affiliations')}>AFFILIATIONS</a>
+          <a href="#hobbies" onClick={(e) => handleNavClick(e, 'hobbies')}>HOBBIES</a>
         </nav>
       </div>
 

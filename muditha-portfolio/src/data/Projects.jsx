@@ -49,10 +49,26 @@ export default function Projects() {
             {pro.fields.skills}
           </p>
 
-          <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}>
-            {pro.fields.description}
-          </p>
-          
+          {pro.fields.description && (
+        <ul style={{ 
+          margin: 0, 
+          paddingLeft: '20px', 
+          color: 'var(--text-muted)', 
+          fontSize: '0.95rem', 
+          display: 'flex', 
+          flexDirection: 'column', 
+          gap: '10px' 
+        }}>
+          {pro.fields.description
+            .split('\n') 
+            .filter(line => line.trim() !== '')
+            .map((line, idx) => (
+              <li key={idx} style={{ lineHeight: '1.6' }}>
+                {line.replace(/^-\s*/, '')}
+              </li>
+            ))}
+        </ul>
+      )}
           <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}>
             {pro.fields.contributors}
           </p>

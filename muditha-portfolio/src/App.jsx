@@ -52,22 +52,6 @@ export default function App() {
     }
     setIsMenuOpen(false); 
   };
-
-  if (!profile) return null; 
-
-  const handleNavClick = (e, id) => {
-    e.preventDefault(); 
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start',
-      });
-    }
-    setIsMenuOpen(false); 
-  };
-
-
   if (!profile) return null; 
 
   return (

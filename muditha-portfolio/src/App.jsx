@@ -40,7 +40,20 @@ export default function App() {
       .catch(console.error);
   }, []);
 
-  const closeMenu = () => setIsMenuOpen(false);
+  
+  const handleNavClick = (e, id) => {
+    e.preventDefault(); 
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
+    }
+    setIsMenuOpen(false); 
+  };
+
+  if (!profile) return null; 
 
   const handleNavClick = (e, id) => {
     e.preventDefault(); 

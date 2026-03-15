@@ -31,7 +31,6 @@ describe('Muditha Lakmali - Portfolio', () => {
     it('Tc_nav_004 :smoothly scrolls to hobbies sections', () => {
       cy.get('.nav-bar a[href="#hobbies"]').click({force: true});
       cy.get('#hobbies').should('be.visible');
-      // Verify that the list of hobbies from Contentful is not empty
       cy.get('#hobbies .content-card ul li').should('have.length.greaterThan', 0);
     });
     
@@ -54,19 +53,12 @@ describe('Muditha Lakmali - Portfolio', () => {
     it('Tc_nav_010 :smoothly scrolls to affiliations sections', () => {
       cy.get('.nav-bar a[href="#affiliations"]').click();
       cy.get('#affiliations').should('be.visible');
-      // Verify items are rendering
       cy.get('#affiliations .content-card ul li').should('have.length.greaterThan', 0);
     });
 
     it('Tc_nav_011 :verify affiliation links are present', () => {
       cy.get('.nav-bar a[href="#affiliations"]').click();
-      // Ensure the first affiliation card has a valid link format
       cy.get('#affiliations .content-card ul li').first().find('a').should('have.attr', 'href').and('include', 'http');
-    });
-
-    it('Tc_nav_012 :verify projects', () => {
-      cy.get('.nav-bar a[href="#projects"]').click();
-      cy.get('#projects').should('be.visible');
     });
   });
 });

@@ -32,7 +32,7 @@ export default function Projects() {
         <div key={i} className="content-card">
           <div className="card-header">
             <h4 style={{ margin: 0 }}>{pro.fields.degree}</h4>
-            <span style={{ color: 'var(--text-muted)', fontSize: '0.85rem' }}>
+            <span style={{ color: 'var(--text-main)', fontSize: '0.95rem' , fontWeight: 800}}>
               {pro.fields.title}
             </span>
           </div>

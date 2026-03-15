@@ -7,7 +7,7 @@ export default function SkillsSection() {
 const [skills, setSkills] = useState([]);
 
   useEffect(() => {
-    client.getEntries({ content_type: 'skills' })
+    client.getEntries({ content_type: 'skills', order: '-sys.createdAt' })
       .then((response) => setSkills(response.items))
       .catch(console.error);
   }, []);

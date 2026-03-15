@@ -4,7 +4,7 @@ import { Mail, MapPin, Linkedin, GraduationCap, Menu, X } from 'lucide-react';
 import { client } from './contentfulClient';
 import { socialLinks } from './data/socials';
 
-
+// Import all modular sections
 import ExperienceSection from './data/ExperienceSection'; 
 import AffiliationSection from './data/AffiliationSection';
 import AwardsSection from './data/AwardsSection'; 
@@ -15,6 +15,8 @@ import LeadershipSection from './data/LeadershipSection';
 import PublicationsSection from './data/PublicationsSection';
 import SkillsSection from './data/SkillsSection';
 import AboutSection from './data/AboutSection';
+import Projects from './data/Projects';
+import Awards from './data/AwardsSection';
 
 import './index.css';
 
@@ -28,6 +30,7 @@ export default function App() {
       year: 'numeric', month: 'long', day: 'numeric' 
     }));
     
+
     client.getEntries({ content_type: 'profile' })
       .then((response) => {
         if (response.items.length > 0) {
@@ -52,6 +55,21 @@ export default function App() {
 
   if (!profile) return null; 
 
+  const handleNavClick = (e, id) => {
+    e.preventDefault(); 
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
+    }
+    setIsMenuOpen(false); 
+  };
+
+
+  if (!profile) return null; 
+
   return (
     <div className="canvas">
       <header className="profile-header">
@@ -60,6 +78,7 @@ export default function App() {
           animate={{ opacity: 1, scale: 1 }} 
           className="profile-img-wrap"
         >
+    
           <img src="/media/profile.png" alt={`${profile.firstName} ${profile.lastName}`} className="profile-img" />
         </motion.div>
 
@@ -89,11 +108,10 @@ export default function App() {
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
-        
-        
         <nav className={`nav-bar ${isMenuOpen ? 'nav-open' : ''}`}>
           <a href="#about" onClick={(e) => handleNavClick(e, 'about')}>ABOUT</a>
           <a href="#experience" onClick={(e) => handleNavClick(e, 'experience')}>EXPERIENCE</a>
+          <a href="#projects" onClick={(e) => handleNavClick(e, 'projects')}>PROJECTS</a>
           <a href="#publications" onClick={(e) => handleNavClick(e, 'publications')}>RESEARCH</a>
           <a href="#skills" onClick={(e) => handleNavClick(e, 'skills')}>SKILLS</a>
           <a href="#education" onClick={(e) => handleNavClick(e, 'education')}>EDUCATION</a>
@@ -106,8 +124,10 @@ export default function App() {
       </div>
 
       <main>
+
         <AboutSection profile={profile} />
         <ExperienceSection />
+        <Projects />
         <PublicationsSection />
         <SkillsSection />
         <EducationSection />
@@ -118,11 +138,11 @@ export default function App() {
         <HobbySection />
       </main>
 
-      <footer style={{ marginTop: '100px', padding: '60px 0', borderTop: '1px solid var(--border)', textAlign: 'center' }}>
-        <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem' }}>
+      <footer style={{ marginTop: '40px', padding: '30px 20px', borderTop: '1px solid var(--border)', textAlign: 'center' }}>
+        <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem', margin: '0 0 8px 0' }}>
           © {new Date().getFullYear()} {profile.firstName} {profile.lastName} • {profile.title}
         </p>
-        <p style={{ color: 'var(--cognac)', fontSize: '0.75rem', fontWeight: 800, marginTop: '10px', letterSpacing: '1px' }}>
+        <p style={{ color: 'var(--cognac)', fontSize: '0.75rem', fontWeight: 800, margin: '0', letterSpacing: '1px' }}>
           Last Updated: {lastUpdated}
         </p>
       </footer>

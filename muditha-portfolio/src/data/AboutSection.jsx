@@ -6,7 +6,7 @@ export default function AboutSection() {
   const [aboutData, setAboutData] = useState(null);
 
   useEffect(() => {
-    client.getEntries({ content_type: 'profile' })
+    client.getEntries({ content_type: 'profile',order: '-sys.createdAt' })
       .then((response) => {
         if (response.items.length > 0) {
           setAboutData(response.items[0]);

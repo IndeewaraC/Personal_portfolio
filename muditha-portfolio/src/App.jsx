@@ -4,7 +4,7 @@ import { Mail, MapPin, Linkedin, GraduationCap, Menu, X } from 'lucide-react';
 import { client } from './contentfulClient';
 import { socialLinks } from './data/socials';
 
-// Import all modular sections
+
 import ExperienceSection from './data/ExperienceSection'; 
 import AffiliationSection from './data/AffiliationSection';
 import AwardsSection from './data/AwardsSection'; 
@@ -16,7 +16,6 @@ import PublicationsSection from './data/PublicationsSection';
 import SkillsSection from './data/SkillsSection';
 import AboutSection from './data/AboutSection';
 import Projects from './data/Projects';
-import Awards from './data/AwardsSection';
 
 import './index.css';
 
@@ -24,13 +23,13 @@ export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [lastUpdated, setLastUpdated] = useState("");
   const [profile, setProfile] = useState(null);
+  const [activeSection, setActiveSection] = useState('about'); 
 
   useEffect(() => {
     setLastUpdated(new Date().toLocaleDateString('en-US', { 
       year: 'numeric', month: 'long', day: 'numeric' 
     }));
     
-
     client.getEntries({ content_type: 'profile' })
       .then((response) => {
         if (response.items.length > 0) {
@@ -42,6 +41,7 @@ export default function App() {
 
   if (!profile) return null; 
 
+  
   const handleNavClick = (e, id) => {
     e.preventDefault(); 
     const element = document.getElementById(id);
@@ -53,7 +53,6 @@ export default function App() {
     }
     setIsMenuOpen(false); 
   };
-
 
   if (!profile) return null; 
 
@@ -96,22 +95,33 @@ export default function App() {
           </button>
         </div>
         <nav className={`nav-bar ${isMenuOpen ? 'nav-open' : ''}`}>
-          <a href="#about" onClick={(e) => handleNavClick(e, 'about')}>ABOUT</a>
-          <a href="#experience" onClick={(e) => handleNavClick(e, 'experience')}>EXPERIENCE</a>
-          <a href="#projects" onClick={(e) => handleNavClick(e, 'projects')}>PROJECTS</a>
-          <a href="#publications" onClick={(e) => handleNavClick(e, 'publications')}>RESEARCH</a>
-          <a href="#skills" onClick={(e) => handleNavClick(e, 'skills')}>SKILLS</a>
-          <a href="#education" onClick={(e) => handleNavClick(e, 'education')}>EDUCATION</a>
-          <a href="#honors" onClick={(e) => handleNavClick(e, 'honors')}>HONORS</a>
-          <a href="#leadership" onClick={(e) => handleNavClick(e, 'leadership')}>LEADERSHIP</a>
-          <a href="#certifications" onClick={(e) => handleNavClick(e, 'certifications')}>CERTIFICATIONS</a>
-          <a href="#affiliations" onClick={(e) => handleNavClick(e, 'affiliations')}>AFFILIATIONS</a>
-          <a href="#hobbies" onClick={(e) => handleNavClick(e, 'hobbies')}>HOBBIES</a>
+     
+          {[
+            { id: 'about', label: 'ABOUT' },
+            { id: 'experience', label: 'EXPERIENCE' },
+            { id: 'projects', label: 'PROJECTS' },
+            { id: 'publications', label: 'RESEARCH' },
+            { id: 'skills', label: 'SKILLS' },
+            { id: 'education', label: 'EDUCATION' },
+            { id: 'honors', label: 'HONORS' },
+            { id: 'leadership', label: 'LEADERSHIP' },
+            { id: 'certifications', label: 'CERTIFICATIONS' },
+            { id: 'affiliations', label: 'AFFILIATIONS' },
+            { id: 'hobbies', label: 'HOBBIES' }
+          ].map((link) => (
+            <a 
+              key={link.id}
+              href={`#${link.id}`} 
+              onClick={(e) => handleNavClick(e, link.id)}
+              className={activeSection === link.id ? 'active' : ''}
+            >
+              {link.label}
+            </a>
+          ))}
         </nav>
       </div>
 
       <main>
-
         <AboutSection profile={profile} />
         <ExperienceSection />
         <Projects />

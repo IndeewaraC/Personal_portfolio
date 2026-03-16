@@ -35,7 +35,6 @@ describe('Muditha Lakmali - Portfolio in mobile view', () => {
       cy.get('.mobile-menu-btn').click();
       cy.get('.nav-bar a[href="#hobbies"]').click({force: true});
       cy.get('#hobbies').should('be.visible');
-      // Verify at least one hobby is loaded from Contentful
       cy.get('#hobbies .content-card ul li').should('have.length.greaterThan', 0);
     });
     

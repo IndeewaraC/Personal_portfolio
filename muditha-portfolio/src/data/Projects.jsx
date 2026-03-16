@@ -32,7 +32,7 @@ export default function Projects() {
         <div key={i} className="content-card">
           <div className="card-header">
             <h4 style={{ margin: 0 }}>{pro.fields.degree}</h4>
-            <span style={{ color: 'var(--text-muted)', fontSize: '0.85rem' }}>
+            <span style={{ color: 'var(--text-main)', fontSize: '0.95rem' , fontWeight: 800}}>
               {pro.fields.title}
             </span>
           </div>
@@ -49,10 +49,26 @@ export default function Projects() {
             {pro.fields.skills}
           </p>
 
-          <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}>
-            {pro.fields.description}
-          </p>
-          
+          {pro.fields.description && (
+        <ul style={{ 
+          margin: 0, 
+          paddingLeft: '20px', 
+          color: 'var(--text-muted)', 
+          fontSize: '0.95rem', 
+          display: 'flex', 
+          flexDirection: 'column', 
+          gap: '10px' 
+        }}>
+          {pro.fields.description
+            .split('\n') 
+            .filter(line => line.trim() !== '')
+            .map((line, idx) => (
+              <li key={idx} style={{ lineHeight: '1.6' }}>
+                {line.replace(/^-\s*/, '')}
+              </li>
+            ))}
+        </ul>
+      )}
           <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}>
             {pro.fields.contributors}
           </p>

@@ -1,37 +1,37 @@
-import { client, fetchOrderedData } from '../src/contentfulClient.js';
+import { client } from '../src/contentfulClient.js';
 import fs from 'fs';
 import path from 'path';
 
 const contentTypes = [
-  'experience',
-  'affiliation',
-  'awards',
-  'certifications',
-  'education',
-  'hobbies',
-  'leadership',
-  'publication',
-  'conferences',
-  'skills',
-  'profile',
-  'projects'
+  { type: 'experience', order: '-sys.createdAt' },
+  { type: 'affiliation', order: '-sys.createdAt' },
+  { type: 'awards', order: '-sys.createdAt' },
+  { type: 'certifications', order: '-sys.createdAt' },
+  { type: 'education', order: '-sys.createdAt' },
+  { type: 'hobbies', order: '-sys.createdAt' },
+  { type: 'leadership', order: '-sys.createdAt' },
+  { type: 'publication', order: '-fields.date' },
+  { type: 'conferences', order: '-fields.date' },
+  { type: 'skills', order: '-sys.createdAt' },
+  { type: 'profile', order: '-sys.createdAt' },
+  { type: 'projects', order: '-sys.createdAt' }
 ];
 
 async function fetchAllData() {
   const data = {};
 
-  for (const type of contentTypes) {
+  for (const { type, order } of contentTypes) {
     try {
-      const entries = await fetchOrderedData(type);
-      data[type] = entries;
-      console.log(`Fetched ${entries.length} ${type} entries`);
+      const response = await client.getEntries({
+        content_type: type,
+        order: order,
+      });
+      data[type] = response;
+      console.log(`Fetched ${response.items.length} ${type} entries`);
     } catch (error) {
       console.error(`Error fetching ${type}:`, error);
     }
   }
-
-  // Also fetch profile if needed
-  // Assuming profile is a separate entry
 
   return data;
 }

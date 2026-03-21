@@ -12,7 +12,7 @@ jobs:
   Build-and-Test:
     runs-on: ubuntu-latest
     
-    # Tell GitHub to run all commands inside your React folder
+    
     defaults:
       run:
         working-directory: ./muditha-portfolio

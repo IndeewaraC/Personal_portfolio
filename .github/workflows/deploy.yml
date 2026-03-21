@@ -23,7 +23,14 @@ jobs:
       run: npm ci
 
     - name: Fetch latest data from Contentful
-      run: npm run prebuild
+      run: |
+        # Option 1: use the prebuild script in package.json
+        if npm run prebuild; then
+          echo "prebuild succeeded"
+        else
+          echo "prebuild script not found or failed, running script directly"
+          node scripts/fetchData.js
+        fi
       env:
         CONTENTFUL_SPACE_ID: ${{ secrets.CONTENTFUL_SPACE_ID }}
         CONTENTFUL_ACCESS_TOKEN: ${{ secrets.CONTENTFUL_ACCESS_TOKEN }}

@@ -5,8 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "prebuild": "node scripts/fetchData.js",
-    "build": "vite build",
+    "build": "node scripts/fetchData.js && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "webhook-server": "node scripts/webhook-server.js"

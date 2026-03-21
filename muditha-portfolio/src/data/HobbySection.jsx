@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { client } from '../contentfulClient'; 
+import { staticData } from './staticData';
 import { Heart } from 'lucide-react';
 
 export default function HobbySection() {
@@ -7,9 +7,7 @@ export default function HobbySection() {
   const [hobbies, setHobbies] = useState([]); 
 
   useEffect(() => {
-    client.getEntries({ content_type: 'hobbies', order: '-sys.createdAt' })
-      .then((response) => setHobbies(response.items))
-      .catch(console.error);
+    setHobbies(staticData.hobbies.items || []);
   }, []);
 
   return (

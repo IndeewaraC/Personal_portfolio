@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { client } from '../contentfulClient'; 
+import { staticData } from './staticData';
 import { Cpu } from 'lucide-react';
 
 export default function SkillsSection() {
@@ -7,9 +7,7 @@ export default function SkillsSection() {
 const [skills, setSkills] = useState([]);
 
   useEffect(() => {
-    client.getEntries({ content_type: 'skills', order: '-sys.createdAt' })
-      .then((response) => setSkills(response.items))
-      .catch(console.error);
+    setSkills(staticData.skills.items || []);
   }, []);
 
   return(

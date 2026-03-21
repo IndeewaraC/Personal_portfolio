@@ -1,14 +1,12 @@
 import { useEffect, useState } from 'react';
-import { client } from '../contentfulClient'; 
+import { staticData } from './staticData';
 import { Briefcase } from 'lucide-react';
 
 export default function ExperienceSection() {
   const [experiences, setExperiences] = useState([]);
 
   useEffect(() => {
-    client.getEntries({ content_type: 'experience', order: '-sys.createdAt' })
-      .then((response) => setExperiences(response.items))
-      .catch(console.error);
+    setExperiences(staticData.experience.items || []);
   }, []);
 
   return (

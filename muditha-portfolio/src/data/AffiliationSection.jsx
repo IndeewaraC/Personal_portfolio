@@ -1,14 +1,12 @@
 import { useEffect, useState } from 'react';
-import { client } from '../contentfulClient'; 
+import { staticData } from './staticData';
 import { ShieldCheck } from 'lucide-react';
 
 export default function AffiliationSection() {
   const [affiliationsList, setAffiliationsList] = useState([]);
 
   useEffect(() => {
-    client.getEntries({ content_type: 'affiliation', order: '-sys.createdAt' })
-      .then((response) => setAffiliationsList(response.items))
-      .catch(console.error);
+    setAffiliationsList(staticData.affiliation.items || []);
   }, []);
 
   return (

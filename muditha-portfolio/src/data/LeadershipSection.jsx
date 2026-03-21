@@ -1,19 +1,12 @@
 import { useEffect, useState } from 'react';
-import { client } from '../contentfulClient'; 
+import { staticData } from './staticData';
 import { Users } from 'lucide-react';
 
 export default function LeadershipSection() {
   const [leadership, setLeadership] = useState([]);
 
 useEffect(() => {
-
-    client.getEntries({ content_type: 'leadership', order: '-sys.createdAt' }) //system created date is used.
-      .then((response) => {
-  
-        console.log("🕵️ RAW FIELDS:", response.items[0].fields);
-        setLeadership(response.items); 
-      })
-      .catch((error) => console.error(error));
+    setLeadership(staticData.leadership.items || []);
   }, []);
 
 return(

@@ -1,14 +1,12 @@
 import { useEffect, useState } from 'react';
-import { client } from '../contentfulClient'; 
+import { staticData } from './staticData';
 import { Verified } from 'lucide-react';
 
 export default function CertificationsSection() { 
   const [certificationsList, setCertificationsList] = useState([]);
 
   useEffect(() => {
-    client.getEntries({ content_type: 'certifications' })
-      .then((response) => setCertificationsList(response.items))
-      .catch(console.error);
+    setCertificationsList(staticData.certifications.items || []);
   }, []);
 
   return (

@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Mail, MapPin, Linkedin, GraduationCap, Menu, X } from 'lucide-react';
 import { client } from './contentfulClient';
 import { socialLinks } from './data/socials';
+import { staticData } from './data/staticData';
 
 
 import ExperienceSection from './data/ExperienceSection'; 
@@ -30,13 +31,7 @@ export default function App() {
       year: 'numeric', month: 'long', day: 'numeric' 
     }));
     
-    client.getEntries({ content_type: 'profile' })
-      .then((response) => {
-        if (response.items.length > 0) {
-          setProfile(response.items[0].fields);
-        }
-      })
-      .catch(console.error);
+    setProfile(staticData.profile.items[0]?.fields || null);
   }, []);
 
 

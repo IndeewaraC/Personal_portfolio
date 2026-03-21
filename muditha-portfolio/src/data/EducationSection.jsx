@@ -1,15 +1,12 @@
 import { useEffect, useState } from 'react';
-import { client } from '../contentfulClient'; 
+import { staticData } from './staticData';
 import { GraduationCap } from 'lucide-react'; 
 
 export default function EducationSection() {
   const [educationlist, seteducationlist] = useState([]);
 
   useEffect(() => {
-
-    client.getEntries({ content_type: 'education', order: '-sys.createdAt' })
-      .then((response) => seteducationlist(response.items))
-      .catch(console.error);
+    seteducationlist(staticData.education.items || []);
   }, []);
 
   return (

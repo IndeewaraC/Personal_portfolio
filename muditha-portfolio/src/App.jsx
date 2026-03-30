@@ -91,7 +91,14 @@ export default function App() {
           className="profile-img-wrap"
         >
     
-          <img src="/media/profile.png" alt={`${profile.firstName} ${profile.lastName}`} className="profile-img" />
+        <img 
+      src="/media/profile.png" 
+      alt={`${profile.firstName} ${profile.lastName}`} 
+      className="profile-img" 
+      fetchpriority="high" 
+      loading="eager" 
+      decoding="async"
+    />
         </motion.div>
 
         <h1 className="name-hero">{`${profile.firstName} ${profile.lastName}`}</h1>

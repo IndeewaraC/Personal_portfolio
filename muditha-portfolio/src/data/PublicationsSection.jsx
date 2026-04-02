@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { client,fetchOrderedData } from '../contentfulClient'; 
+import { staticData } from './staticData';
 import { FileText, ExternalLink } from 'lucide-react';
 
 export default function PublicationsSection() {
@@ -7,14 +7,8 @@ export default function PublicationsSection() {
   const [conferences, setConferences] = useState([]);
 
   useEffect(() => {
-    fetchOrderedData('publication', 'date')
-      .then((response) => setPublications(response.items))
-      .catch(console.error);
-
-    fetchOrderedData('conferences', 'date')
-      .then((response) => setConferences(response.items))
-      .catch(console.error);
-
+    setPublications(staticData.publication.items || []);
+    setConferences(staticData.conferences.items || []);
   }, []);
 
   const groupedConferences = conferences.reduce((acc, conf) => {

@@ -12,11 +12,88 @@ A clean, modern, and highly responsive personal portfolio website designed speci
 * **Sticky Navigation**: A frosted-glass sticky header that allows users to quickly jump between sections.
 * **Modern Typography**: Powered by *Plus Jakarta Sans* for a clean, academic, and highly readable look.
 
-## 🛠️ Tech Stack
-* **Framework**: [React](https://reactjs.org/)
-* **Styling**: Pure CSS (Custom CSS Variables for easy theming)
-* **Icons**: [Lucide React](https://lucide.dev/)
-* **Animations**: [Framer Motion](https://www.framer.com/motion/)
+## � Automatic Updates with Contentful Webhooks
+
+This portfolio supports automatic rebuilding when you update content in Contentful. Follow these steps to set it up:
+
+### 1. GitHub Repository Setup
+
+1. **Enable GitHub Pages** in your repository settings:
+   - Go to Settings → Pages
+   - Set source to "GitHub Actions"
+
+2. **Add Repository Secrets**:
+   - Go to Settings → Secrets and variables → Actions
+   - Add these secrets:
+     - `CONTENTFUL_SPACE_ID`: Your Contentful space ID
+     - `CONTENTFUL_ACCESS_TOKEN`: Your Contentful access token
+
+### 2. Contentful Webhook Setup
+
+1. **Create a Webhook in Contentful**:
+   - Go to Settings → Webhooks
+   - Click "Add Webhook"
+   - Name: "Portfolio Auto-Update"
+   - URL: `https://api.github.com/repos/YOUR_USERNAME/YOUR_REPO/dispatches`
+   - Triggers: Select "Publish" events for all content types
+   - HTTP Method: POST
+   - Headers:
+     - `Authorization`: `token YOUR_GITHUB_PERSONAL_ACCESS_TOKEN`
+     - `Accept`: `application/vnd.github.v3+json`
+   - Request Body: 
+     ```json
+     {
+       "event_type": "contentful-update"
+     }
+     ```
+
+2. **Create a Personal Access Token** (if using direct webhook):
+   - Go to GitHub Settings → Developer settings → Personal access tokens
+   - Generate new token with `repo` scope
+   - Use this token in the webhook Authorization header
+
+### 3. Alternative: Webhook Relay Service
+
+For better security, use a service like [Zapier](https://zapier.com) or [Make](https://www.make.com):
+
+1. **Contentful → Zapier**: Trigger on content publish
+2. **Zapier → GitHub**: Call repository dispatch API
+
+### 4. Manual Webhook Server (Optional)
+
+If you want to run your own webhook server:
+
+```bash
+# Install dependencies
+npm install express
+
+# Set environment variables
+export CONTENTFUL_WEBHOOK_SECRET=your_webhook_secret
+export GITHUB_REPO=your_username/your_repo
+export GITHUB_TOKEN=your_github_token
+
+# Run the server
+node scripts/webhook-server.js
+```
+
+Then point your Contentful webhook to your server URL.
+
+## 📝 Manual Update Process
+
+If webhooks aren't set up, update manually:
+
+```bash
+# Fetch latest data
+npm run prebuild
+
+# Build and preview
+npm run build
+npm run preview
+```
+
+## 🚀 Deployment
+
+The site is configured for GitHub Pages deployment via GitHub Actions. Push to main branch to trigger automatic deployment.
 
 ## 📂 Project Structure
 

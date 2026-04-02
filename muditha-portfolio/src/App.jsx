@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Mail, MapPin, Linkedin, GraduationCap, Menu, X } from 'lucide-react';
 import { client } from './contentfulClient';
 import { socialLinks } from './data/socials';
+import { staticData } from './data/staticData';
 
 
 import ExperienceSection from './data/ExperienceSection'; 
@@ -30,16 +31,41 @@ export default function App() {
       year: 'numeric', month: 'long', day: 'numeric' 
     }));
     
-    client.getEntries({ content_type: 'profile' })
-      .then((response) => {
-        if (response.items.length > 0) {
-          setProfile(response.items[0].fields);
-        }
-      })
-      .catch(console.error);
+    setProfile(staticData.profile.items[0]?.fields || null);
   }, []);
 
-  if (!profile) return null; 
+
+  useEffect(() => {
+    if (!profile) return; 
+
+    let observer;
+    let sections;
+
+    const timer = setTimeout(() => {
+      observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              setActiveSection(entry.target.id);
+            }
+          });
+        },
+      
+        { rootMargin: '-20% 0px -50% 0px' } 
+      );
+
+   
+      sections = document.querySelectorAll('main section[id]');
+      sections.forEach((section) => observer.observe(section));
+    }, 100);
+
+    return () => {
+      clearTimeout(timer);
+      if (observer && sections) {
+        sections.forEach((section) => observer.unobserve(section));
+      }
+    };
+  }, [profile]); 
 
   
   const handleNavClick = (e, id) => {
@@ -65,7 +91,14 @@ export default function App() {
           className="profile-img-wrap"
         >
     
-          <img src="/media/profile.png" alt={`${profile.firstName} ${profile.lastName}`} className="profile-img" />
+        <img 
+      src="/media/profile.png" 
+      alt={`${profile.firstName} ${profile.lastName}`} 
+      className="profile-img" 
+      fetchpriority="high" 
+      loading="eager" 
+      decoding="async"
+    />
         </motion.div>
 
         <h1 className="name-hero">{`${profile.firstName} ${profile.lastName}`}</h1>

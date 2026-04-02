@@ -1,25 +1,12 @@
 import { useEffect, useState } from 'react';
-import { client } from '../contentfulClient'; 
+import { staticData } from './staticData';
 import { FolderCode, ExternalLink } from 'lucide-react';
 
 export default function Projects() {
   const [projects, setProjects] = useState([]);
 
   useEffect(() => {
-    client.getEntries({ 
-      content_type: 'projects', 
-      order: '-sys.createdAt'
-    })
-      .then((response) => {
-        if (response.items.length > 0) {
-          console.log("Loading Projects...", response.items[0].fields);
-        } else {
-          console.log("⚠️ No projects found! Check your Content Type ID or Publish status.");
-        }
-        
-        setProjects(response.items);
-      })
-      .catch((error) => console.error(error));
+    setProjects(staticData.projects.items || []);
   }, []);
 
   return (

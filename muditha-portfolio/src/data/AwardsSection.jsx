@@ -1,14 +1,12 @@
 import { useEffect, useState } from 'react';
-import { client } from '../contentfulClient'; 
+import { staticData } from './staticData';
 import { Award } from 'lucide-react';
 
 export default function Awards() {
   const [awardsList, setAwardsList] = useState([]);
 
   useEffect(() => {
-    client.getEntries({ content_type: 'awards', order: '-sys.createdAt' })
-      .then((response) => setAwardsList(response.items))
-      .catch(console.error);
+    setAwardsList(staticData.awards.items || []);
   }, []);
 
   return (

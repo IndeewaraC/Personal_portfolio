@@ -28,3 +28,6 @@ jobs:
           working-directory: ./muditha-portfolio
           start: npm run dev
           wait-on: 'http://localhost:5173'
+        env:
+          VITE_CONTENTFUL_SPACE_ID: ${{ secrets.VITE_CONTENTFUL_SPACE_ID }}
+          VITE_CONTENTFUL_ACCESS_TOKEN: ${{ secrets.VITE_CONTENTFUL_ACCESS_TOKEN }}

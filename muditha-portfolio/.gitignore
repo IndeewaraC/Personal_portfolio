@@ -22,3 +22,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Inside .gitignore
+node_modules
+dist
+.env
+.DS_Store

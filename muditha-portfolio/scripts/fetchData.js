@@ -1,6 +1,14 @@
-import { client } from '../src/contentfulClient.js';
+import * as contentful from 'contentful';
+import * as dotenv from 'dotenv';
 import fs from 'fs';
 import path from 'path';
+
+dotenv.config();
+
+const client = contentful.createClient({
+  space: process.env.VITE_CONTENTFUL_SPACE_ID,
+  accessToken: process.env.VITE_CONTENTFUL_ACCESS_TOKEN,
+});
 
 const contentTypes = [
   { type: 'experience', order: '-sys.createdAt' },
@@ -14,7 +22,8 @@ const contentTypes = [
   { type: 'conferences', order: '-fields.date' },
   { type: 'skills', order: '-sys.createdAt' },
   { type: 'profile', order: '-sys.createdAt' },
-  { type: 'projects', order: '-sys.createdAt' }
+  { type: 'projects', order: '-sys.createdAt' },
+  { type: 'urls' },
 ];
 
 async function fetchAllData() {
@@ -37,7 +46,7 @@ async function fetchAllData() {
 }
 
 async function saveData(data) {
-  const filePath = path.join(process.cwd(), 'src', 'data', 'staticData.js');
+  const filePath = path.join(process.cwd(), 'src', 'components', 'staticData.js');
   const content = `export const staticData = ${JSON.stringify(data, null, 2)};`;
 
   fs.writeFileSync(filePath, content);

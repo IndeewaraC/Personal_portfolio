@@ -68,7 +68,6 @@ describe('Muditha Lakmali Portfolio – Mobile', () => {
       cy.get('.nav-bar').should('not.have.class', 'nav-open');
     });
 
-    
     it('TC_UI_M_011 : nav menu contains all 11 section links when open', () => {
       cy.get('.mobile-menu-btn').click();
       const sections = [

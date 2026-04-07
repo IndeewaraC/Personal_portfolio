@@ -3,15 +3,15 @@ name: Staging CI (Cypress Tests)
 on:
   push:
     branches:
-      - staging  
+      - staging
   pull_request:
     branches:
-      - main    
+      - main
 
 jobs:
-  cypress-run:
+  deploy-and-test:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
@@ -21,7 +21,35 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Cypress Run
+      - name: Deploy to Vercel (Staging Preview)
+        if: github.ref == 'refs/heads/staging'
+        id: vercel-deploy
+        working-directory: ./muditha-portfolio
+        run: |
+          npm install -g vercel
+          vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
+          vercel build --token=${{ secrets.VERCEL_TOKEN }}
+          DEPLOY_URL=$(vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }})
+          echo "url=$DEPLOY_URL" >> $GITHUB_OUTPUT
+        env:
+          VERCEL_ORG_ID: team_iUuBTHt70kcCq0CcIh88oBAZ
+          VERCEL_PROJECT_ID: prj_vSk0r9pTbSC6WesSknLwieXiGoIB
+          VITE_CONTENTFUL_SPACE_ID: ${{ secrets.VITE_CONTENTFUL_SPACE_ID }}
+          VITE_CONTENTFUL_ACCESS_TOKEN: ${{ secrets.VITE_CONTENTFUL_ACCESS_TOKEN }}
+
+      - name: Cypress Run (against staging URL)
+        if: github.ref == 'refs/heads/staging'
+        uses: cypress-io/github-action@v6
+        with:
+          browser: chrome
+          working-directory: ./muditha-portfolio
+          config: baseUrl=${{ steps.vercel-deploy.outputs.url }}
+        env:
+          VITE_CONTENTFUL_SPACE_ID: ${{ secrets.VITE_CONTENTFUL_SPACE_ID }}
+          VITE_CONTENTFUL_ACCESS_TOKEN: ${{ secrets.VITE_CONTENTFUL_ACCESS_TOKEN }}
+
+      - name: Cypress Run (against localhost for PR to main)
+        if: github.event_name == 'pull_request'
         uses: cypress-io/github-action@v6
         with:
           browser: chrome

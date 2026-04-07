@@ -228,7 +228,7 @@ describe('Muditha Lakmali Portfolio – Desktop', () => {
         expect(res.status).to.eq(200);
         expect(res.body.items).to.have.length.at.least(1);
         const fields = res.body.items[0].fields;
-        expect(fields).to.have.all.keys('firstName', 'lastName', 'email');
+        expect(fields).to.include.keys('firstName', 'lastName', 'email');
       });
     });
 

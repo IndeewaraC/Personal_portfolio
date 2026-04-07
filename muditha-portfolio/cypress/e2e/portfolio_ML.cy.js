@@ -3,13 +3,11 @@
 // Viewports : 1920×1080  |  Categories: UI · Navigation · Data Display · API
 // ============================================================================
 
-const BASE_URL = 'http://localhost:5173';
-
 describe('Muditha Lakmali Portfolio – Desktop', () => {
 
   beforeEach(() => {
     cy.viewport(1920, 1080);
-    cy.visit(BASE_URL);
+    cy.visit('/');
   });
 
   // ══════════════════════════════════════════════════════════════════════════

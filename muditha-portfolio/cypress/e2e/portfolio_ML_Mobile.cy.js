@@ -4,13 +4,11 @@
 // Categories: UI · Navigation · Data Display · API
 // ============================================================================
 
-const BASE_URL = 'http://localhost:5173';
-
 describe('Muditha Lakmali Portfolio – Mobile', () => {
 
   beforeEach(() => {
     cy.viewport(430, 932);
-    cy.visit(BASE_URL);
+    cy.visit('/');
   });
 
   // ══════════════════════════════════════════════════════════════════════════

@@ -30,7 +30,23 @@ module.exports = defineConfig({
     },
 
     setupNodeEvents(on, config) {
-      require('cypress-mochawesome-reporter/plugin')(on);
+      // Wrap `on` so the reporter's before:run cleanup never crashes on
+      // Windows EPERM (e.g. a previous report HTML is open in the browser).
+      const safeOn = (event, handler) => {
+        if (event === 'before:run') {
+          on(event, async (...args) => {
+            try {
+              await handler(...args);
+            } catch (e) {
+              if (e.code !== 'EPERM') throw e;
+              // Locked file on Windows – skip cleanup, continue with report gen
+            }
+          });
+        } else {
+          on(event, handler);
+        }
+      };
+      require('cypress-mochawesome-reporter/plugin')(safeOn);
       return config;
     },
   },

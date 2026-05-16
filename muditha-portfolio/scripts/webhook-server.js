@@ -1,6 +1,6 @@
-const express = require('express');
-const { exec } = require('child_process');
-const crypto = require('crypto');
+import express from 'express';
+import { exec } from 'child_process';
+import crypto from 'crypto';
 
 const app = express();
 app.use(express.json());

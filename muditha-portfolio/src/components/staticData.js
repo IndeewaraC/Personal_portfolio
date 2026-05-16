@@ -1588,10 +1588,52 @@ export const staticData = {
     "sys": {
       "type": "Array"
     },
-    "total": 6,
+    "total": 7,
     "skip": 0,
     "limit": 100,
     "items": [
+      {
+        "metadata": {
+          "tags": [],
+          "concepts": []
+        },
+        "sys": {
+          "space": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Space",
+              "id": "3z6zws5fs7ea"
+            }
+          },
+          "id": "7FsLdIvxWUwRtZUFXGkGCJ",
+          "type": "Entry",
+          "createdAt": "2026-05-13T21:54:16.056Z",
+          "updatedAt": "2026-05-13T22:00:00.958Z",
+          "environment": {
+            "sys": {
+              "id": "master",
+              "type": "Link",
+              "linkType": "Environment"
+            }
+          },
+          "publishedVersion": 13,
+          "revision": 3,
+          "contentType": {
+            "sys": {
+              "type": "Link",
+              "linkType": "ContentType",
+              "id": "leadership"
+            }
+          },
+          "locale": "en-US"
+        },
+        "fields": {
+          "role": "Volunteer Judge",
+          "organization": "Manitoba Schools Science Symposium (MSSS)",
+          "period": "Apr 2026",
+          "desc": "- Evaluated student science research presentations across diverse STEM disciplines as a volunteer judge at the Manitoba Schools Science Symposium (MSSS).\n\n- Provided constructive feedback to students on their research questions, study design, data presentation, and scientific communication skills.\n\n- Engaged with students from diverse backgrounds and supported youth participation and innovation in science and research."
+        }
+      },
       {
         "metadata": {
           "tags": [],
@@ -2975,7 +3017,7 @@ export const staticData = {
           "id": "5t42C7q7tK4AYI8E3y0iAn",
           "type": "Entry",
           "createdAt": "2026-03-14T02:50:17.779Z",
-          "updatedAt": "2026-03-21T05:37:54.552Z",
+          "updatedAt": "2026-05-16T05:50:00.235Z",
           "environment": {
             "sys": {
               "id": "master",
@@ -2983,8 +3025,8 @@ export const staticData = {
               "linkType": "Environment"
             }
           },
-          "publishedVersion": 32,
-          "revision": 11,
+          "publishedVersion": 46,
+          "revision": 18,
           "contentType": {
             "sys": {
               "type": "Link",
@@ -3004,7 +3046,7 @@ export const staticData = {
           "country": "Canada",
           "email": "muditha.bodawattegedara@umanitoba.ca",
           "tagline": "Welcome and thank you for visiting !",
-          "bio": "Biostatistician with nearly eight years of experience in advanced statistics, data science, and policy-driven health research. My expertise includes study design, statistical analysis plan (SAP) development, advanced statistical and machine-learning modeling, longitudinal and time-to-event data analysis, hybrid methods that combine statistical and machine-learning models, and analysis of large administrative, clinical, electronic health record (EHR), and linked health databases, with a strong focus on data linkage, governance, and reproducible workflows. I collaborate with clinicians, epidemiologists, and health system stakeholders to build reproducible analytical pipelines and deliver clear, decision-ready reports that translate complex statistical findings into actionable insights."
+          "bio": "Biostatistician with nearly eight years of experience in advanced statistics, data science, and policy-driven health research. My expertise includes study design, statistical analysis plan (SAP) development, advanced statistical and machine-learning modeling, longitudinal and time-to-event data analysis, hybrid methods that combine statistical and machine-learning models, and analysis of large administrative, clinical, electronic health record (EHR), and linked health databases, with a strong focus on data linkage, governance, and reproducible workflows. I collaborate with clinicians, epidemiologists, and health system stakeholders to build reproducible analytical pipelines and deliver clear, decision-ready reports that translate complex statistical findings into actionable insights.Te"
         }
       }
     ]

@@ -8,7 +8,12 @@
     "build": "node scripts/fetchData.js && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "webhook-server": "node scripts/webhook-server.js"
+    "webhook-server": "node scripts/webhook-server.js",
+    "test": "cypress run",
+    "test:desktop": "cypress run --spec 'cypress/e2e/portfolio_ML.cy.js'",
+    "test:mobile": "cypress run --spec 'cypress/e2e/portfolio_ML_Mobile.cy.js'",
+    "test:open": "cypress open",
+    "test:report": "cypress run && echo 'Report saved to cypress/reports/'"
   },
   "dependencies": {
     "contentful": "^11.10.6",
@@ -24,11 +29,16 @@
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^5.1.1",
     "cypress": "^15.11.0",
+    "cypress-mochawesome-reporter": "^4.0.2",
+    "dotenv": "^17.4.1",
     "eslint": "^9.39.1",
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.4.24",
     "express": "^5.2.1",
     "globals": "^16.5.0",
+    "mochawesome": "^7.1.4",
+    "mochawesome-merge": "^5.1.1",
+    "mochawesome-report-generator": "^6.3.2",
     "vite": "^8.0.0-beta.13",
     "vite-ssg": "^28.3.0"
   },
